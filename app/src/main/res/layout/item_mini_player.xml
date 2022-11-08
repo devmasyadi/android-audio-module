@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_mini_player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:focusable="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@id/exo_progress"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:buffered_color="#E6E2E2"
+        app:played_color="#E91E63"
+        app:scrubber_disabled_size="0dp"
+        app:scrubber_dragged_size="0dp"
+        app:scrubber_enabled_size="0dp"
+        app:unplayed_color="#E6E2E2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/imgMiniPlayer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_album_art" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitleMiniPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Title Audio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvArtistMiniPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/exo_prev"
+            style="@style/ExoMediaButton.Previous"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_baseline_skip_previous_24" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp">
+
+            <ImageView
+                android:id="@id/exo_pause"
+                style="@style/ExoMediaButton.Pause"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/ic_baseline_pause_24" />
+
+            <ImageView
+                android:id="@id/exo_play"
+                style="@style/ExoMediaButton.Play"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/ic_baseline_play_arrow_24" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@id/exo_next"
+            style="@style/ExoMediaButton.Next"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_baseline_skip_next_24" />
+
+    </LinearLayout>
+
+</LinearLayout>
