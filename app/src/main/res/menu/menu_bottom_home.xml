@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/actionHome"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/actionFavorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite" />
+    <item
+        android:id="@+id/actionDownload"
+        android:icon="@drawable/ic_baseline_download_24"
+        android:title="Download" />
+
+    <item
+        android:id="@+id/actionRecentPlayed"
+        android:icon="@drawable/ic_baseline_update_24"
+        android:title="Recent Played" />
+    <item
+        android:id="@+id/actionPlaylist"
+        android:icon="@drawable/ic_baseline_playlist_play_24"
+        android:title="Playlist" />
+</menu>
