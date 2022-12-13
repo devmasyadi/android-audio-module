@@ -24,8 +24,8 @@ data class AudioModel(
     @field:SerializedName("audios")
     val audios: List<AudiosItem>? = null,
 
-    @field:SerializedName("audioWithCategory")
-    val audioWithCategory: List<AudioWithCategoryItem>? = null,
+    @field:SerializedName("audiosWithCategory")
+    val audiosWithCategory: List<AudioWithCategoryItem>? = null,
 
     @field:SerializedName("packageName")
     val packageName: String? = null,
