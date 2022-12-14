@@ -90,6 +90,9 @@ data class AudioWithCategoryItem(
     @field:SerializedName("audios")
     val audios: List<AudiosItem>? = null,
 
+    @field:SerializedName("categoryName")
+    val categoryName: String? = null,
+
     @PrimaryKey
     @ColumnInfo(name = "audioWithCategoryId")
     @field:SerializedName("_id")
