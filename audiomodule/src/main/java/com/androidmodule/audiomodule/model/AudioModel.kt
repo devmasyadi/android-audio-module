@@ -57,6 +57,9 @@ data class AudioModel(
     @field:SerializedName("positionBannerDetail")
     val positionBannerDetail: String? = null,
 
+    @field:SerializedName("isCanDownload")
+    val isCanDownload: Boolean? = false,
+
     ) : Parcelable
 
 @Entity
