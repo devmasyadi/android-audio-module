@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val audioModule = module {
+val audioModule = module(override = true) {
     factory { get<AudioModuleDatabase>().audioDao() }
     single {
         Room.databaseBuilder(
