@@ -23,7 +23,7 @@ class MyApplication : Application() {
             modules(
                 listOf(
                     audioModule,
-                    audioPlayerServiceExoPlayerModule
+                    audioPlayerServiceExoPlayerModule,
                 )
             )
         }

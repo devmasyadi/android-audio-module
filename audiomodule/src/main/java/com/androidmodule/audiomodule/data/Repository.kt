@@ -179,6 +179,12 @@ class Repository(
         }.flowOn(Dispatchers.IO)
     }
 
+    override fun isDoneDownload(reqDownload: Long): Flow<Long> {
+        return flow {
+            emit(reqDownload)
+        }
+    }
+
     override fun isAudioDownload(audioId: String): Flow<Boolean> {
         return localDataSource.isAudioDownload(audioId)
             .map { it.isNotEmpty() }

@@ -1,11 +1,17 @@
 package com.androidmodule.audiomoduleexample.ui.home
 
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat.RECEIVER_EXPORTED
+import androidx.core.content.ContextCompat.registerReceiver
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidmodule.audiomodule.data.Resource
@@ -21,7 +27,6 @@ import com.androidmodule.audiomoduleexample.databinding.FragmentHomeBinding
 import com.androidmodule.audiomoduleexample.ui.detailAudio.DetailAudioActivity
 import com.androidmodule.audiomoduleexample.utils.showDialogAddAudioToPlaylist
 import com.androidmodule.audiomoduleexample.utils.showPopUpMenuAudio
-import com.androidmodule.audiomoduleserviceexoplayer.AudioPlayerViewModel
 import com.androidmodule.audiomoduleserviceexoplayer.AudioUtils
 import org.koin.android.ext.android.inject
 
@@ -31,7 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var listItemAudioAdapter: ListItemAudioAdapter
     private val audioViewModel: AudioViewModel by inject()
     private val listPlaylist = ArrayList<Playlist>()
-    private val audioPlayerViewModel: AudioPlayerViewModel by inject()
+    private lateinit var downloadReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +50,19 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        downloadReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                getWithoutLoading()
+            }
+        }
+        val downloadIntentFilter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+        registerReceiver(
+            requireContext(),
+            downloadReceiver,
+            downloadIntentFilter,
+            RECEIVER_EXPORTED
+        )
     }
 
     override fun onCreateView(
@@ -80,6 +98,24 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
             adapter = listItemAudioAdapter
         }
+
+        getData()
+    }
+
+    private fun getWithoutLoading() {
+        audioViewModel.getData(requireContext().packageName)
+            .observe(requireActivity()) { resource ->
+                when (resource) {
+                    is Resource.Error -> {}
+                    is Resource.Loading -> {}
+                    is Resource.Success -> {
+                        resource.data.audios?.let { listItemAudioAdapter.setListAudiosItem(it) }
+                    }
+                }
+            }
+    }
+
+    private fun getData() {
         audioViewModel.getData(requireContext().packageName)
             .observe(requireActivity()) { resource ->
                 when (resource) {
@@ -139,7 +175,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onShareAudio(audiosItem: AudiosItem) {
-                TODO("Not yet implemented")
+
             }
 
         })

@@ -49,9 +49,10 @@ class ListItemAudioAdapter(
                 btnOption.setOnClickListener {
                     iListAudioAdapter?.onOptionClicked(audiosItem, it)
                 }
+                val isOnline = audiosItem.url?.startsWith("http")
                 val pathDownload = audiosItem.audioId.validateDownload().toPathDownload(context)
                 val viewBtnDownload =
-                    if (pathDownload.isPathExistDownload()) View.GONE else View.VISIBLE
+                    if (pathDownload.isPathExistDownload() || isOnline == false) View.GONE else View.VISIBLE
                 btnDownload.visibility = viewBtnDownload
                 btnDownload.setOnClickListener {
                     AudioModuleUtils.downloadAudio(context, audiosItem)

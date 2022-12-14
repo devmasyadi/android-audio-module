@@ -26,6 +26,7 @@ class AudioViewModel(private val repository: Repository): ViewModel() {
     fun addAudioToDownload(audiosItem: AudiosItem) = repository.addAudioToDownload(audiosItem)
     fun deleteAudioFromDownload(audioId: String) = repository.deleteAudioFromDownload(audioId)
     fun listAudioDownload() = repository.listAudioDownload().asLiveData()
+    fun isDoneDownload(reqDownload: Long) = repository.isDoneDownload(reqDownload)
     fun isAudioDownload(audioId: String) = repository.isAudioDownload(audioId)
     fun updateDownload(reqDownload: Long, isDoneDownload: Boolean) = repository.updateDownload(reqDownload, isDoneDownload)
     //recentPlayed

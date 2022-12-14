@@ -34,8 +34,30 @@ data class AudioModel(
     val isWithCategory: Boolean? = null,
 
     @field:SerializedName("updatedAt")
-    val updatedAt: String? = null
-) : Parcelable
+    val updatedAt: String? = null,
+
+    @field:SerializedName("intervalNativeHome")
+    val intervalNativeHome: Int? = null,
+
+    @field:SerializedName("isShowNativeHome")
+    val isShowNativeHome: Boolean? = null,
+
+    @field:SerializedName("isShowBannerHome")
+    val isShowBannerHome: Boolean? = null,
+
+    @field:SerializedName("isShowBannerDetail")
+    val isShowBannerDetail: Boolean? = null,
+
+    @field:SerializedName("sizeNativeHome")
+    val sizeNativeHome: String? = null,
+
+    @field:SerializedName("positionBannerHome")
+    val positionBannerHome: String? = null,
+
+    @field:SerializedName("positionBannerDetail")
+    val positionBannerDetail: String? = null,
+
+    ) : Parcelable
 
 @Entity
 @Parcelize

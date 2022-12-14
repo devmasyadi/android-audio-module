@@ -28,6 +28,7 @@ interface IRepository {
     fun updateDownload(reqDownload: Long, isDoneDownload: Boolean)
     fun deleteAudioFromDownload(audioId: String)
     fun listAudioDownload(): Flow<Resource<List<AudiosItem>>>
+    fun isDoneDownload(reqDownload: Long): Flow<Long>
     fun isAudioDownload(audioId: String): Flow<Boolean>
     //recentPlayed
     fun addAudioToRecentPlayed(audiosItem: AudiosItem)
