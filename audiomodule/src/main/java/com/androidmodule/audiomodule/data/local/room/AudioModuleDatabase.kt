@@ -16,7 +16,7 @@ import com.androidmodule.audiomodule.utils.RoomDataConverter
         RecentPlayedAudio::class,
         Playlist::class,
         PlaylistAudioCrossRef::class
-    ], version = 1, exportSchema = false
+    ], version = 2, exportSchema = false
 )
 
 @TypeConverters(RoomDataConverter::class)

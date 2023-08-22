@@ -81,6 +81,9 @@ data class AudiosItem(
     @field:SerializedName("url")
     var url: String? = null,
 
+    @field:SerializedName("lyric")
+    var lyric: String? = null,
+
 ) : Parcelable
 
 @Entity
