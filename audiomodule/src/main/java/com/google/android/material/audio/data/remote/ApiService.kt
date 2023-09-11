@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("mp3/apps")
+    @GET("apps")
     suspend fun getData(
         @Query("packageName") packageName: String?
     ): AudioModel
